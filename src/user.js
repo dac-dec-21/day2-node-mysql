@@ -19,9 +19,8 @@ const selectAllUser = async () => {
   // let sql = `SELECT * FROM user WHERE ID=?`;
   const list = await connection.queryAsync(sql, [10]);
 
-  console.log(list);
-
   await connection.endAsync();
+  return list;
 };
 
 const addUser = async (user) => {
