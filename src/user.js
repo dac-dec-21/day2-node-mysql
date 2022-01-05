@@ -15,9 +15,7 @@ const selectAllUser = async () => {
   await connection.connectAsync();
 
   let sql = `SELECT * FROM user`;
-  // let sql = `SELECT * FROM user ORDER BY ID DESC`;
-  // let sql = `SELECT * FROM user WHERE ID=?`;
-  const list = await connection.queryAsync(sql, [10]);
+  const list = await connection.queryAsync(sql);
 
   await connection.endAsync();
   return list;
