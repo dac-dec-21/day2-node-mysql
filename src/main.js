@@ -1,17 +1,19 @@
 const express = require("express");
 const app = express();
 
-const { selectAllUser } = require("./user");
-
-// http://localhost:4000/users
-app.get("/users", async (req, res) => {
-  const list = await selectAllUser();
-  res.json(list);
+// URL:: http://localhost:4000/
+app.get("/", (req, res) => {
+  res.json({ title: "hellooo first api" });
 });
 
-// http://localhost:4000/hello
-app.get("/hello", (req, res) => {
-  res.json({ message: "hellooo" });
+// URL:: http://localhost:4000/1
+app.get("/1", (req, res) => {
+  res.json({ message: "1111" });
+});
+
+// URL:: http://localhost:4000/2
+app.get("/2", (req, res) => {
+  res.json({ message: "ABcd 22233" });
 });
 
 app.listen(4000, () => console.log("server started"));
