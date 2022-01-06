@@ -13,7 +13,12 @@ app.get("/1", (req, res) => {
 
 // URL:: http://localhost:4000/2
 app.get("/2", (req, res) => {
-  res.json({ message: "ABcd 22233" });
+  res.json({ message: "ABcd 22222" });
+});
+
+// URL:: http://localhost:4000/3
+app.post("/3", (req, res) => {
+  res.json({ message: "Hello Post" });
 });
 
 app.listen(4000, () => console.log("server started"));
