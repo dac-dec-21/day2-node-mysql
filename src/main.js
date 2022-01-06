@@ -1,15 +1,19 @@
 const express = require("express");
 const app = express();
+// THIS IS HELPING TO READ THE :: "POST REQUEST BODY".
 app.use(express.json());
 
-app.get("/users", (req, res) => {
-  console.log(req.query);
-  res.json({ message: "I AM TRYINTN TO  GET ALL USERS" });
+const { addUser, selectAllUser } = require("./user");
+
+app.get("/users", async (req, res) => {
+  const list = await selectAllUser();
+  res.json(list);
 });
 
-app.post("/add-user", (req, res) => {
-  console.log(req.body);
-  res.json({ message: "I AM TRYING TO Add New User Kuch Bhiiii" });
+app.post("/add-user", async (req, res) => {
+  const user = req.body;
+  await addUser(user);
+  res.json({ message: "User Added Successfully" });
 });
 
-app.listen(4000, () => console.log("server started"));
+app.listen(4000, () => console.log("this is optional, server started"));
