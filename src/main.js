@@ -3,6 +3,10 @@ const app = express();
 // THIS IS HELPING TO READ THE :: "POST REQUEST BODY".
 app.use(express.json());
 
+// CROSS ORIGIN REQUEST ENABLING.
+const cors = require("cors");
+app.use(cors());
+
 const { addUser, selectAllUser } = require("./user");
 
 app.get("/users", async (req, res) => {
