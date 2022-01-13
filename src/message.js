@@ -9,28 +9,28 @@ const dbinfo = {
   database: "project1",
 };
 
-const selectAllUser = async () => {
+const selectAllMessages = async () => {
   const connection = mysql.createConnection(dbinfo);
 
   await connection.connectAsync();
 
-  let sql = `SELECT * FROM user ORDER BY id DESC`;
+  let sql = `SELECT * FROM MESSAGE ORDER BY id DESC`;
   const list = await connection.queryAsync(sql);
 
   await connection.endAsync();
   return list;
 };
 
-const addUser = async (user) => {
+const addMessage = async (ref) => {
   const connection = mysql.createConnection(dbinfo);
 
   await connection.connectAsync();
 
-  let sql = `INSERT INTO user (username, password) values (?, ?)`;
-  connection.queryAsync(sql, [user.username, user.password]);
+  let sql = `INSERT INTO MESSAGE (message) values (?)`;
+  connection.queryAsync(sql, [ref.message]);
   console.log("Record Added!");
 
   await connection.endAsync();
 };
 
-module.exports = { selectAllUser, addUser };
+module.exports = { selectAllMessages, addMessage };

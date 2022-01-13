@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
-const { addUser, selectAllUser } = require("./user");
+const { selectAllMessages, addMessage } = require("./message");
 
 // The "/messages" can vary student can type anything
 // The purpose is get all the messages
@@ -15,7 +15,7 @@ app.get("/messages", async (req, res) => {
 // The purpose is add new message
 app.post("/add-message", async (req, res) => {
   const user = req.body;
-  await addUser(user);
+  await addMessage(user);
   res.json({ message: "Message Added Successfully" });
 });
 
